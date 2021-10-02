@@ -1,3 +1,6 @@
+## 0.1.0
+* migrate to null-safety
+
 ## 0.0.8
 
 * add linux example app

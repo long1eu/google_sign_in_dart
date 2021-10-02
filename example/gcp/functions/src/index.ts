@@ -2,8 +2,8 @@ import * as functions from 'firebase-functions';
 import * as rp from "request-promise-native";
 import {StatusCodeError} from "request-promise-native/errors";
 
-const CLIENT_ID = '233259864964-go57eg1ones74e03adlqvbtg2av6tivb.apps.googleusercontent.com';
-const CLIENT_SECRET = '<clientSecret>';
+const CLIENT_ID = functions.config().client.id;
+const CLIENT_SECRET = functions.config().client.secret;
 
 // noinspection JSUnusedGlobalSymbols
 export const authHandler = functions.https.onRequest(async (req, res) => {
@@ -15,31 +15,34 @@ export const authHandler = functions.https.onRequest(async (req, res) => {
     const codeVerifier = body.codeVerifier;
 
     if (!code && !token) {
-        return res
+        res
             .contentType('text/plain')
             .status(400)
             .send('no_code_or_token');
+        return;
     }
 
     if (!clientId || code && (!codeVerifier || !redirectUrl)) {
-        return res
+        res
             .contentType('text/plain')
             .status(400)
             .send('invalid_request');
+        return;
     }
 
     if (clientId !== CLIENT_ID) {
-        return res
+        res
             .contentType('text/plain')
             .status(400)
             .send('invalid_client_id');
+        return;
     }
 
-    return (code
+    await (code
         ? exchangeCode(code, codeVerifier, redirectUrl)
         : refreshToken(token))
-        .then(value => res.send(value))
-        .catch(reason => {
+        .then((value) => res.send(value))
+        .catch((reason) => {
             if (reason instanceof StatusCodeError) {
                 return res
                     .contentType('text/plain')
