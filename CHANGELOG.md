@@ -1,3 +1,7 @@
+## 0.2.0
+BREAKING CHANGE:
+* added `prompt` argument `select_account`, that forces the users to select user account they want to use
+
 ## 0.1.0
 * migrate to null-safety
 
