@@ -53,6 +53,7 @@ Future<Map<String, dynamic>> _tokenSignIn({
     'nonce': nonce,
     'state': state,
     'include_granted_scopes': 'true',
+    'prompt': 'select_account',
   };
 
   if (hostedDomains != null && hostedDomains.isNotEmpty) {

@@ -16,7 +16,7 @@ import 'package:http/http.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-part 'src/code_exchange_sing_in.dart';
+part 'src/code_exchange_sign_in.dart';
 part 'src/common.dart';
 part 'src/crypto.dart';
 part 'src/data_storage.dart';
