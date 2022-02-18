@@ -62,6 +62,7 @@ Future<Map<String, dynamic>> _codeExchangeSignIn({
     'state': state,
     'access_type': 'offline',
     'include_granted_scopes': 'true',
+    'prompt': 'select_account',
   };
 
   if (hostedDomains != null && hostedDomains.isNotEmpty) {
