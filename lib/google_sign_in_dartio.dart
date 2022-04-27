@@ -33,9 +33,11 @@ class GoogleSignInDart extends platform.GoogleSignInPlatform {
     required String clientId,
     required UrlPresenter presenter,
     String? exchangeEndpoint,
+    int? port,
   })  : _storage = storage,
         _clientId = clientId,
         presenter = presenter,
+        _port = port,
         _exchangeEndpoint = exchangeEndpoint;
 
   /// Registers this implementation as default implementation for GoogleSignIn
@@ -48,6 +50,7 @@ class GoogleSignInDart extends platform.GoogleSignInPlatform {
     String? exchangeEndpoint,
     DataStorage? storage,
     UrlPresenter? presenter,
+    int? port,
   }) async {
     presenter ??= (Uri uri) => launch(uri.toString());
 
@@ -72,12 +75,14 @@ class GoogleSignInDart extends platform.GoogleSignInPlatform {
       storage: storage,
       exchangeEndpoint: exchangeEndpoint,
       clientId: clientId,
+      port: port,
     );
   }
 
   final String? _exchangeEndpoint;
   final String _clientId;
   final DataStorage _storage;
+  final int? _port;
 
   late List<String> _scopes;
   String? _hostedDomain;
@@ -281,6 +286,7 @@ class GoogleSignInDart extends platform.GoogleSignInPlatform {
         hostedDomains: _hostedDomain,
         presenter: presenter,
         uid: _storage.id,
+        port: _port,
       );
     }
 
