@@ -15,6 +15,7 @@ Future<Map<String, dynamic>> _tokenSignIn({
   required UrlPresenter presenter,
   String? hostedDomains,
   String? uid,
+  int? port,
 }) async {
   final Completer<Map<String, dynamic>> completer =
       Completer<Map<String, dynamic>>();
@@ -26,8 +27,8 @@ Future<Map<String, dynamic>> _tokenSignIn({
       _deriveCodeVerifierChallenge(codeVerifier);
 
   final InternetAddress address = InternetAddress.loopbackIPv4;
-  final HttpServer server = await HttpServer.bind(address, 0);
-  final int port = server.port;
+  final HttpServer server = await HttpServer.bind(address, port ?? 0);
+  port = port ?? server.port;
   server.listen((HttpRequest request) async {
     final Uri uri = request.requestedUri;
 
