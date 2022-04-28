@@ -1,3 +1,6 @@
+## 0.2.1
+* Add the option to specify a port for the local server.
+
 ## 0.2.0
 BREAKING CHANGE:
 * added `prompt` argument `select_account`, that forces the users to select user account they want to use
@@ -6,7 +9,6 @@ BREAKING CHANGE:
 * migrate to null-safety
 
 ## 0.0.8
-
 * add linux example app
 * sign out when the userinfo endpoint returns 401
 * if the user info is null but we have a valid token we try to fetch the user again
