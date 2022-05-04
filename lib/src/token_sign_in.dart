@@ -16,6 +16,8 @@ Future<Map<String, dynamic>> _tokenSignIn({
   String? hostedDomains,
   String? uid,
   int? port,
+  String? successUrl,
+  String? failUrl,
 }) async {
   final Completer<Map<String, dynamic>> completer =
       Completer<Map<String, dynamic>>();
@@ -35,10 +37,18 @@ Future<Map<String, dynamic>> _tokenSignIn({
     if (uri.path == '/') {
       return _sendData(request, _verifyFragmentHtml);
     } else if (uri.path == '/response') {
-      await _validateTokenResponse(request, state)
-          .then(completer.complete)
-          .catchError(completer.completeError)
-          .whenComplete(server.close);
+      if (successUrl != null && failUrl != null) {
+        await _validateTokenWithCustomScreen(
+                request, state, successUrl, failUrl)
+            .then(completer.complete)
+            .catchError(completer.completeError)
+            .whenComplete(server.close);
+      } else {
+        await _validateTokenResponse(request, state)
+            .then(completer.complete)
+            .catchError(completer.completeError)
+            .whenComplete(server.close);
+      }
     } else {
       return _sendData(request, _imageData, 'image/png; base64');
     }
@@ -95,4 +105,30 @@ Future<Map<String, String>> _validateTokenResponse(
     await _sendData(request, _successHtml);
     return authResponse;
   }
+}
+
+Future<Map<String, String>> _validateTokenWithCustomScreen(HttpRequest request,
+    String state, String successUrl, String failUrl) async {
+  final Map<String, String> authResponse = request.requestedUri.queryParameters;
+  final String? returnedState = authResponse['state'];
+  final String? accessToken = authResponse['access_token'];
+  final String? idToken = authResponse['id_token'];
+  if (state != returnedState ||
+      accessToken == null ||
+      accessToken.isEmpty ||
+      idToken == null ||
+      idToken.isEmpty) {
+    request.response
+      ..statusCode = 500
+      ..write('');
+    request.response.redirect(Uri.parse(failUrl));
+    await launch(failUrl);
+  } else {
+    request.response
+      ..statusCode = 200
+      ..write('');
+    request.response.redirect(Uri.parse(successUrl));
+  }
+  await request.response.close();
+  return authResponse;
 }
