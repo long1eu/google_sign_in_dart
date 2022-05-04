@@ -34,23 +34,32 @@ class GoogleSignInDart extends platform.GoogleSignInPlatform {
     required UrlPresenter presenter,
     String? exchangeEndpoint,
     int? port,
+    String? successUrl,
+    String? failUrl,
   })  : _storage = storage,
         _clientId = clientId,
         presenter = presenter,
         _port = port,
-        _exchangeEndpoint = exchangeEndpoint;
+        _exchangeEndpoint = exchangeEndpoint,
+        _successUrl = successUrl,
+        _failUrl = failUrl;
 
   /// Registers this implementation as default implementation for GoogleSignIn
   ///
   /// Your application should provide a [storage] implementation that can store
   /// the tokens is a secure, long-lived location that is accessible between
   /// different invocations of your application.
+  ///
+  /// Providing [successUrl] and [failUrl] will invoque such urls after
+  /// login succeeds or fails
   static Future<void> register({
     required String clientId,
     String? exchangeEndpoint,
     DataStorage? storage,
     UrlPresenter? presenter,
     int? port,
+    String? successUrl,
+    String? failUrl,
   }) async {
     presenter ??= (Uri uri) => launch(uri.toString());
 
@@ -83,6 +92,8 @@ class GoogleSignInDart extends platform.GoogleSignInPlatform {
   final String _clientId;
   final DataStorage _storage;
   final int? _port;
+  final String? _successUrl;
+  final String? _failUrl;
 
   late List<String> _scopes;
   String? _hostedDomain;
@@ -287,6 +298,8 @@ class GoogleSignInDart extends platform.GoogleSignInPlatform {
         presenter: presenter,
         uid: _storage.id,
         port: _port,
+        successUrl: _successUrl,
+        failUrl: _failUrl,
       );
     }
 
