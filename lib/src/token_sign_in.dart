@@ -120,14 +120,14 @@ Future<Map<String, String>> _validateTokenWithCustomScreen(HttpRequest request,
       idToken.isEmpty) {
     request.response
       ..statusCode = 500
-      ..headers.set('content-type', 'text/plain')
       ..write('');
+    request.response.redirect(Uri.parse(failUrl));
     await launch(failUrl);
   } else {
     request.response
       ..statusCode = 200
       ..write('');
-    await launch(successUrl);
+    request.response.redirect(Uri.parse(successUrl));
   }
   await request.response.close();
   return authResponse;
