@@ -85,6 +85,8 @@ class GoogleSignInDart extends platform.GoogleSignInPlatform {
       exchangeEndpoint: exchangeEndpoint,
       clientId: clientId,
       port: port,
+      successUrl: successUrl,
+      failUrl: failUrl,
     );
   }
 
