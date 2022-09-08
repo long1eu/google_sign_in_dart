@@ -11,16 +11,16 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  google_sign_in: ^5.1.1
-  google_sign_in_platform_interface: ^2.0.1
-  shared_preferences: ^2.0.8
-  shared_preferences_macos: ^2.0.2
-  shared_preferences_linux: ^2.0.2
-  url_launcher: ^6.0.12
-  url_launcher_macos: ^2.0.2
+  google_sign_in: ^5.4.1
+  google_sign_in_platform_interface: ^2.3.0
+  shared_preferences: ^2.0.15
+  shared_preferences_macos: ^2.0.4
+  shared_preferences_linux: ^2.1.1
+  url_launcher: ^6.1.5
+  url_launcher_macos: ^3.0.1
   meta: ^1.7.0
-  crypto: ^3.0.1
-  http: ^0.13.3
+  crypto: ^3.0.2
+  http: ^0.13.5
   html_unescape: ^2.0.0
 
 dev_dependencies:
