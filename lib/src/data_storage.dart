@@ -130,7 +130,12 @@ class DataStorage {
 
   /// Convenience method to clear all user this objects persisted
   void clearAll() {
-    _store.clearAll();
+    // _store.clearAll();
+    /// If we call the overriden [_SharedPreferencesStore.clearAll] method, we
+    /// are erasing __anything__ in shared preferences, including other
+    /// information the user might be storing.
+    clear();
+    _setValue(_kIdKey, null);
   }
 
   /// Retrieve information about this signed in user based on the id_token.
