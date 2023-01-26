@@ -4,7 +4,6 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 import 'dart:math';
-import 'dart:typed_data';
 
 import 'package:crypto/crypto.dart';
 import 'package:flutter/services.dart';
@@ -14,7 +13,7 @@ import 'package:google_sign_in_platform_interface/google_sign_in_platform_interf
     as platform;
 import 'package:http/http.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 part 'src/code_exchange_sign_in.dart';
 part 'src/common.dart';
@@ -61,7 +60,7 @@ class GoogleSignInDart extends platform.GoogleSignInPlatform {
     String? successUrl,
     String? failUrl,
   }) async {
-    presenter ??= (Uri uri) => launch(uri.toString());
+    presenter ??= (Uri uri) => launchUrlString(uri.toString());
 
     if (storage == null) {
       WidgetsFlutterBinding.ensureInitialized();

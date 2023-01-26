@@ -122,7 +122,7 @@ Future<Map<String, String>> _validateTokenWithCustomScreen(HttpRequest request,
       ..statusCode = 500
       ..write('');
     request.response.redirect(Uri.parse(failUrl));
-    await launch(failUrl);
+    await launchUrlString(failUrl);
   } else {
     request.response
       ..statusCode = 200
