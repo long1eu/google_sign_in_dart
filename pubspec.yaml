@@ -14,7 +14,7 @@ dependencies:
   google_sign_in: ^5.1.1
   google_sign_in_platform_interface: ^2.0.1
   shared_preferences: ^2.0.8
-  shared_preferences_macos: ^2.0.2
+  shared_preferences_foundation: ^2.1.2
   shared_preferences_linux: ^2.0.2
   url_launcher: ^6.0.12
   url_launcher_macos: ^2.0.2
