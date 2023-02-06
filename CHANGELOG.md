@@ -1,3 +1,6 @@
+## 0.2.2
+* changed discounted shared_preferences_macos to shared_preferences_foundation thanks to https://github.com/TimYusR
+
 ## 0.2.1
 * Add the option to specify a port for the local server.
 
