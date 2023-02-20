@@ -12,8 +12,7 @@ dependencies:
   url_launcher: ^6.0.12
   googleapis: ^5.0.1
   extension_google_sign_in_as_googleapis_auth: ^2.0.4
-
-  google_sign_in: ^5.1.1
+  google_sign_in: ^6.0.0
   google_sign_in_dartio:
     path: ../
 
