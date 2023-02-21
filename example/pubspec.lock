@@ -60,10 +60,11 @@ packages:
   extension_google_sign_in_as_googleapis_auth:
     dependency: "direct main"
     description:
-      name: extension_google_sign_in_as_googleapis_auth
-      sha256: "07724b1f6609f6698539f0c766db4822045539e6f6ecea824d905662b542c82b"
-      url: "https://pub.dev"
-    source: hosted
+      path: "packages/extension_google_sign_in_as_googleapis_auth"
+      ref: d24a43390d599cf7338bd8cab8578fcbf479b6b3
+      resolved-ref: d24a43390d599cf7338bd8cab8578fcbf479b6b3
+      url: "https://github.com/superlistapp/packages.git"
+    source: git
     version: "2.0.7"
   fake_async:
     dependency: transitive
@@ -104,14 +105,22 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  google_identity_services_web:
+    dependency: transitive
+    description:
+      name: google_identity_services_web
+      sha256: "5d9af2f1fa192f2629a266d038ee9307b0abe729a4f1b454dd21b414f5e7d381"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.2.0"
   google_sign_in:
     dependency: "direct main"
     description:
       name: google_sign_in
-      sha256: dfb5bd5aaed6b910dddfc4a5db20214d691d578b9187cc8083cf6aed9ba57f82
+      sha256: "4f7177a6116738b0c54230a864f1d44d5d2bbec3e43b4d00c16735e32bb8e8da"
       url: "https://pub.dev"
     source: hosted
-    version: "5.4.3"
+    version: "6.0.0"
   google_sign_in_android:
     dependency: transitive
     description:
@@ -147,18 +156,18 @@ packages:
     dependency: transitive
     description:
       name: google_sign_in_web
-      sha256: "75cc41ebc53b1756320ee14d9c3018ad3e6cea298147dbcd86e9d0c8d6720b40"
+      sha256: a33778787257c348f1ec8f0ab51bc680af7dc224ad7a71fb5a5d49177dca3c49
       url: "https://pub.dev"
     source: hosted
-    version: "0.10.2+1"
+    version: "0.11.0"
   googleapis:
     dependency: "direct main"
     description:
       name: googleapis
-      sha256: bfc58deceaec0a8683383ae82786d7392915f43404fffe7efff466e8f2d2ef71
+      sha256: "0af31e6aba9c6a72ee9c6fd02cb10813ed16d34bbd392b500fb147d64558f95d"
       url: "https://pub.dev"
     source: hosted
-    version: "5.0.1"
+    version: "10.1.0"
   googleapis_auth:
     dependency: transitive
     description:
@@ -501,5 +510,5 @@ packages:
     source: hosted
     version: "0.2.0+3"
 sdks:
-  dart: ">=2.18.0 <4.0.0"
+  dart: ">=2.18.0 <3.0.0"
   flutter: ">=3.0.0"
