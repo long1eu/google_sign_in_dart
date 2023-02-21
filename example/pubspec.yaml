@@ -10,10 +10,15 @@ dependencies:
     sdk: flutter
   http: ^0.13.3
   url_launcher: ^6.0.12
-  googleapis: ^5.0.1
-  extension_google_sign_in_as_googleapis_auth: ^2.0.4
+  googleapis: ^10.1.0
+  extension_google_sign_in_as_googleapis_auth:
+    git:
+      url: https://github.com/superlistapp/packages.git
+      path: packages/extension_google_sign_in_as_googleapis_auth
+      # This version supports google_sign_in 6.0.0
+      ref: d24a43390d599cf7338bd8cab8578fcbf479b6b3
 
-  google_sign_in: ^5.1.1
+  google_sign_in: ^6.0.0
   google_sign_in_dartio:
     path: ../
 

@@ -88,14 +88,22 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  google_identity_services_web:
+    dependency: transitive
+    description:
+      name: google_identity_services_web
+      sha256: "5d9af2f1fa192f2629a266d038ee9307b0abe729a4f1b454dd21b414f5e7d381"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.2.0"
   google_sign_in:
     dependency: "direct main"
     description:
       name: google_sign_in
-      sha256: dfb5bd5aaed6b910dddfc4a5db20214d691d578b9187cc8083cf6aed9ba57f82
+      sha256: "4f7177a6116738b0c54230a864f1d44d5d2bbec3e43b4d00c16735e32bb8e8da"
       url: "https://pub.dev"
     source: hosted
-    version: "5.4.3"
+    version: "6.0.0"
   google_sign_in_android:
     dependency: transitive
     description:
@@ -124,10 +132,10 @@ packages:
     dependency: transitive
     description:
       name: google_sign_in_web
-      sha256: "75cc41ebc53b1756320ee14d9c3018ad3e6cea298147dbcd86e9d0c8d6720b40"
+      sha256: a33778787257c348f1ec8f0ab51bc680af7dc224ad7a71fb5a5d49177dca3c49
       url: "https://pub.dev"
     source: hosted
-    version: "0.10.2+1"
+    version: "0.11.0"
   html_unescape:
     dependency: "direct main"
     description:
@@ -454,5 +462,5 @@ packages:
     source: hosted
     version: "0.2.0+3"
 sdks:
-  dart: ">=2.18.0 <4.0.0"
+  dart: ">=2.18.0 <3.0.0"
   flutter: ">=3.0.0"
