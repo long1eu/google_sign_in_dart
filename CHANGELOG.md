@@ -1,3 +1,7 @@
+# 0.2.2+1
+* Add pubspec.lock to .gitignore
+* Update dependencies
+
 ## 0.2.2
 * changed discounted shared_preferences_macos to shared_preferences_foundation thanks to https://github.com/TimYusR
 
