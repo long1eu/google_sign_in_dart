@@ -1,3 +1,7 @@
+## 0.2.2+2
+
+* Update `google_sign_in` and `http` dependencies
+
 # 0.2.2+1
 * Add pubspec.lock to .gitignore
 * Update dependencies
