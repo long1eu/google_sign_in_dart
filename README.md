@@ -28,7 +28,7 @@ mainly used on Desktop.
     
     void main() {
       if (isDesktop) {
-        GoogleSignInPlatform.register(clientId: <clientId>);
+        GoogleSignInDart.register(clientId: <clientId>);
       }
     
       runApp(MyApp());
@@ -63,7 +63,7 @@ use the `signInWithCredentials` method.
     
     void main() {
       if (isDesktop) {
-        GoogleSignInPlatform.register(
+        GoogleSignInDart.register(
             clientId: <clientId>, 
             exchangeEndpoint: <endpoint>,
         );
