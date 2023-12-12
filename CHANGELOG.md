@@ -1,3 +1,7 @@
+## 0.3.0
+
+* Add ability to create own `Store` to save credentials.
+
 ## 0.2.3
 
 * Update `google_sign_in` and `http` dependencies

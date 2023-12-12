@@ -4,7 +4,6 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 import 'dart:math';
-import 'dart:typed_data';
 
 import 'package:crypto/crypto.dart';
 import 'package:flutter/services.dart';
@@ -48,20 +47,20 @@ class GoogleSignInDart extends platform.GoogleSignInPlatform {
   static Future<void> register({
     required String clientId,
     String? exchangeEndpoint,
-    DataStorage? storage,
+    Store? store,
     UrlPresenter? presenter,
     int? port,
   }) async {
-    presenter ??= (Uri uri) => launch(uri.toString());
+    presenter ??= (Uri uri) => launchUrl(uri);
 
-    if (storage == null) {
+    if (store == null) {
       WidgetsFlutterBinding.ensureInitialized();
       final SharedPreferences _preferences =
           await SharedPreferences.getInstance();
-      final _SharedPreferencesStore store =
-          _SharedPreferencesStore(_preferences);
-      storage = DataStorage._(store: store, clientId: clientId);
+      store = _SharedPreferencesStore(_preferences);
     }
+
+    final DataStorage storage = DataStorage._(store: store, clientId: clientId);
 
     // If tokenExchangeEndpoint is removed in a session after the user was
     // logged in, we need to clear the refresh token since we can non longer use
