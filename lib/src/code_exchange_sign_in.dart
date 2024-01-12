@@ -15,6 +15,7 @@ Future<Map<String, dynamic>> _codeExchangeSignIn({
   required String scope,
   required UrlPresenter presenter,
   String? hostedDomains,
+  String? appRedirectUrl,
   String? uid,
 }) async {
   final Completer<Map<String, dynamic>> completer =
@@ -43,6 +44,7 @@ Future<Map<String, dynamic>> _codeExchangeSignIn({
         state: state,
         clientId: clientId,
         codeVerifier: codeVerifier,
+        appRedirectUrl: appRedirectUrl,
       )
           .then(completer.complete)
           .catchError(completer.completeError)
@@ -86,6 +88,7 @@ Future<Map<String, dynamic>> _validateAndExchangeCodeResponse({
   required String redirectUrl,
   required String clientId,
   required String codeVerifier,
+  required String? appRedirectUrl,
 }) {
   final Map<String, String> authResponse = request.requestedUri.queryParameters;
   final String? returnedState = authResponse['state'];
@@ -110,7 +113,7 @@ Future<Map<String, dynamic>> _validateAndExchangeCodeResponse({
       codeVerifier: codeVerifier,
     )
         .then((Map<String, dynamic> value) =>
-            _sendData(request, _successHtml).then((_) => value))
+            _sendData(request, _successHtml(appRedirectUrl)).then((_) => value))
         .catchError(
             (dynamic error, StackTrace stackTrace) =>
                 _sendErrorAndThrow<Map<String, dynamic>>(

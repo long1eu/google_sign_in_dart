@@ -13,6 +13,7 @@ Future<Map<String, dynamic>> _tokenSignIn({
   required String clientId,
   required String scope,
   required UrlPresenter presenter,
+  String? appRedirectUrl,
   String? hostedDomains,
   String? uid,
   int? port,
@@ -35,7 +36,7 @@ Future<Map<String, dynamic>> _tokenSignIn({
     if (uri.path == '/') {
       return _sendData(request, _verifyFragmentHtml);
     } else if (uri.path == '/response') {
-      await _validateTokenResponse(request, state)
+      await _validateTokenResponse(request, state, appRedirectUrl)
           .then(completer.complete)
           .catchError(completer.completeError)
           .whenComplete(server.close);
@@ -72,7 +73,7 @@ Future<Map<String, dynamic>> _tokenSignIn({
 }
 
 Future<Map<String, String>> _validateTokenResponse(
-    HttpRequest request, String state) async {
+    HttpRequest request, String state, String? appRedirectUrl) async {
   final Map<String, String> authResponse = request.requestedUri.queryParameters;
   final String? returnedState = authResponse['state'];
   final String? accessToken = authResponse['access_token'];
@@ -92,7 +93,7 @@ Future<Map<String, String>> _validateTokenResponse(
   if (message != null) {
     return _sendErrorAndThrow(request, message);
   } else {
-    await _sendData(request, _successHtml);
+    await _sendData(request, _successHtml(appRedirectUrl));
     return authResponse;
   }
 }

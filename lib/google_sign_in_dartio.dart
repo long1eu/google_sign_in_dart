@@ -32,9 +32,11 @@ class GoogleSignInDart extends platform.GoogleSignInPlatform {
     required String clientId,
     required UrlPresenter presenter,
     String? exchangeEndpoint,
+    String? appRedirectUrl,
     int? port,
   })  : _storage = storage,
         _clientId = clientId,
+        _appRedirectUrl = appRedirectUrl,
         presenter = presenter,
         _port = port,
         _exchangeEndpoint = exchangeEndpoint;
@@ -50,6 +52,7 @@ class GoogleSignInDart extends platform.GoogleSignInPlatform {
     Store? store,
     UrlPresenter? presenter,
     int? port,
+    String? appRedirectUrl,
   }) async {
     presenter ??= (Uri uri) => launchUrl(uri);
 
@@ -75,11 +78,13 @@ class GoogleSignInDart extends platform.GoogleSignInPlatform {
       exchangeEndpoint: exchangeEndpoint,
       clientId: clientId,
       port: port,
+      appRedirectUrl: appRedirectUrl,
     );
   }
 
   final String? _exchangeEndpoint;
   final String _clientId;
+  final String? _appRedirectUrl;
   final DataStorage _storage;
   final int? _port;
 
@@ -277,6 +282,7 @@ class GoogleSignInDart extends platform.GoogleSignInPlatform {
         presenter: presenter,
         exchangeEndpoint: _exchangeEndpoint!,
         uid: _storage.id,
+        appRedirectUrl: _appRedirectUrl,
       );
     } else {
       future = _tokenSignIn(
@@ -286,6 +292,7 @@ class GoogleSignInDart extends platform.GoogleSignInPlatform {
         presenter: presenter,
         uid: _storage.id,
         port: _port,
+        appRedirectUrl: _appRedirectUrl,
       );
     }
 
